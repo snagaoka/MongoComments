@@ -28,7 +28,6 @@ server.get('/echo/:name', function (req, res, next) {
 });
 
 // GET
-
 server.get('/', function (req, res){
 	console.log('someone_at_website');
 	res.send('welcome!');
@@ -36,15 +35,18 @@ server.get('/', function (req, res){
 
 // POST
 server.post('/comments', function (req, res){
-	res.send('your comments are saved');
+	// console.log(req.body);
+	// return;
 
 	// create instance of model -- mongoosejs constructing documents
-	var post = new CommentModel({
-		comment: req.body.title
+	var newComment = new CommentModel({
+		title: req.body.title
 	});
-	comment.save(function (err, t){
+	newComment.save(function (err, t){
+		res.send('your comments are saved');
 
 	});
+
 });
 
 
